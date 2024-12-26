@@ -8,4 +8,3 @@ __Testing the models__
 # TODO :white_check_mark:
 * Improve models
 * Collect own dataset of polish sign language
-* Fix loading the SqueezeNet model issue  
