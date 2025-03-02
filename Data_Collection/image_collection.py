@@ -3,9 +3,8 @@ import os
 import time
 
 COLLECTED_DATA_PATH = './../PSL_Collected_Data'
-labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'W', 'Y','Z']
-number_of_img_per_label = 5
-
+labels = ['A', 'B', 'C', 'CH', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'SZ', 'T', 'U', 'W', 'Y','Z']
+number_of_img_per_label = 50
 
 def capture_images(label):
     print(f'Currently collecting label: {label}')
@@ -19,14 +18,12 @@ def capture_images(label):
             print("Failed to capture image")
             break
 
-        text = f'Label: {label} | Image: {image_number}/{number_of_img_per_label - 1}'
-        cv2.putText(frame, text, (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-        cv2.putText(frame, "Press Q to exit", (20, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+        print(f'Label: {label} | Image: {image_number}/{number_of_img_per_label - 1}')
 
         file_name = f'{COLLECTED_DATA_PATH}/{label}/{label}_{image_number}.jpg'
         cv2.imwrite(file_name, frame)
-        cv2.imshow('frame', frame)
-        time.sleep(2)
+        cv2.imshow('PJM Capture', frame)
+        time.sleep(0.3)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             cap.release()
